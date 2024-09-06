@@ -386,8 +386,14 @@ function ProductList() {
                     <button
                       className="product-button"
                       onClick={() => handleAddToCart(plant)}
+                      disabled={!!cart.find((item) => item.name === plant.name)}
+                      {...(!!cart.find((item) => item.name === plant.name) && {
+                        style: { backgroundColor: "gray" },
+                      })}
                     >
-                      Add to Cart
+                      {!!cart.find((item) => item.name === plant.name)
+                        ? "Added to cart"
+                        : "Add to Cart"}
                     </button>
                   </div>
                 ))}
